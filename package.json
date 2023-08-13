@@ -1,0 +1,11 @@
+{
+  "name": "pokatheme_child",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass ./assets/src/scss/main.scss ./assets/public/css/custom-reviews-listing.css --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
