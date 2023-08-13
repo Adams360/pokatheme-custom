@@ -1,3 +1,122 @@
-
+.review-box {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #5554de;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #181818;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(164px, auto) 1fr 1fr 1fr max-content;
+  grid-template-areas: "img title title cta cta" "img benefits benefits cta cta" "info info info info toggle" "expand expand expand expand expand" "data1 data1 . data2 data2";
+}
+@media screen and (max-width: 768px) {
+  .review-box {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "img title title title" "data1 data1  data2 data2" "benefits benefits benefits benefits" "info info info info" "cta cta cta cta" "toggle toggle toggle toggle" "expand expand expand expand";
+  }
+}
+.review-box__img {
+  grid-area: img;
+}
+.review-box__img a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.review-box__img a img {
+  width: 80;
+  height: 80%;
+  object-fit: contain;
+}
+.review-box__title {
+  grid-area: title;
+}
+.review-box__title h3 {
+  font-size: 20px;
+  line-height: 32px;
+}
+.review-box__cta {
+  grid-area: cta;
+}
+.review-box__cta a {
+  background-color: #5554de;
+  color: #ffffff;
+  border-radius: 16px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.review-box__cta a:hover {
+  background-color: #2222de;
+}
+.review-box__benefits {
+  grid-area: benefits;
+}
+.review-box__benefits ul {
+  list-style-type: disc;
+}
+.review-box__benefits ul li::before {
+  all: unset;
+}
+.review-box__benefits ul li::marker {
+  color: #dbd8d8;
+}
+.review-box__info {
+  grid-area: info;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.review-box__info > p {
+  all: unset;
+}
+.review-box__info > p span {
+  font-weight: bold;
+}
+.review-box__toggle {
+  grid-area: toggle;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.review-box__toggle::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../img/arrow.svg");
+}
+.review-box__toggle[aria-expanded=true]::after {
+  transform: rotate(180deg);
+}
+.review-box__expand {
+  grid-area: expand;
+  display: none;
+}
+.review-box__data-1 {
+  grid-area: data1;
+  display: flex;
+}
+.review-box__data-2 {
+  grid-area: data2;
+  display: flex;
+  justify-self: end;
+}
 
 /*# sourceMappingURL=custom-reviews-listing.css.map */
