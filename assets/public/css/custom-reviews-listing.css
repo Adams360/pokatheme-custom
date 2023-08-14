@@ -1,122 +1,256 @@
-.review-box {
-  border-width: 1px;
+.reviews-table--style1 ul {
+  list-style-type: initial;
+}
+.reviews-table--style1 ul li {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #6c6c6c;
+}
+.reviews-table--style1 ul li::marker {
+  display: inline-block;
+  color: #dbd8d8;
+}
+.reviews-table--style1 ul li::before {
+  all: unset;
+}
+.reviews-table--style1 .review-box {
+  counter-increment: review-counter;
+  position: relative;
   border-style: solid;
-  border-color: #5554de;
-  border-radius: 20px;
+  border-width: 2px;
+  border-color: #f4f5f7;
   background-color: #ffffff;
   color: #181818;
-  padding: 1rem;
-  width: 100%;
-  cursor: pointer;
+  border-radius: 20px;
+  padding: 1.25rem 1.25rem 1rem;
   display: grid;
   gap: 1rem;
-  grid-template-columns: minmax(164px, auto) 1fr 1fr 1fr max-content;
-  grid-template-areas: "img title title cta cta" "img benefits benefits cta cta" "info info info info toggle" "expand expand expand expand expand" "data1 data1 . data2 data2";
+  grid-template-columns: 164px 1fr 1fr 179px auto;
+  grid-template-areas: "thumbnail title title cta cta" "thumbnail benefits benefits cta cta" "info info info info toggle" "expand expand expand expand expand" "data1 data1 . data2 data2";
+  transition: border-color 0.3s ease-in-out;
 }
 @media screen and (max-width: 768px) {
-  .review-box {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "img title title title" "data1 data1  data2 data2" "benefits benefits benefits benefits" "info info info info" "cta cta cta cta" "toggle toggle toggle toggle" "expand expand expand expand";
+  .reviews-table--style1 .review-box {
+    padding: 1rem 1rem 0;
   }
 }
-.review-box__img {
-  grid-area: img;
+.reviews-table--style1 .review-box:not(:last-child) {
+  margin: 0 0 1.875rem;
 }
-.review-box__img a {
-  display: flex;
-  width: 100%;
-  height: 100%;
+@media screen and (max-width: 768px) {
+  .reviews-table--style1 .review-box {
+    grid-template-columns: 108px 1fr 1fr 1fr;
+    grid-template-rows: 97px;
+    grid-template-areas: "thumbnail title title title" "data1 data1 data2 data2" "benefits benefits benefits benefits" "info info info info" "cta cta cta cta" "toggle toggle toggle toggle" "expand expand expand expand";
+  }
+}
+.reviews-table--style1 .review-box:hover {
+  border-color: #5554de;
+}
+.reviews-table--style1 .review-box:hover .review-box__cta a {
+  background-color: #5554de;
+  color: #ffffff;
+}
+.reviews-table--style1 .review-box:hover.review-box--counter::after {
+  translate: 0;
+  background: #5554de;
+  color: #fff;
+}
+.reviews-table--style1 .review-box--counter::after {
+  content: counter(review-counter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #dBd8d8;
+  color: #404040;
+  width: 40px;
+  height: 33px;
+  text-align: center;
+  line-height: 1;
+  border-radius: 14px 0;
+  font-weight: 700;
+  display: grid;
+  place-content: center;
+  translate: -2px -2px;
+  transition: background-color 0.3s ease-in-out, translate 0.3s ease-in-out;
+}
+.reviews-table--style1 .review-box__thumbnail {
+  grid-area: thumbnail;
   border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 0 0 1px #dBd8d8;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.review-box__img a img {
-  width: 80;
-  height: 80%;
-  object-fit: contain;
-}
-.review-box__title {
+.reviews-table--style1 .review-box__title {
   grid-area: title;
+  align-self: center;
 }
-.review-box__title h3 {
-  font-size: 20px;
-  line-height: 32px;
-}
-.review-box__cta {
-  grid-area: cta;
-}
-.review-box__cta a {
-  background-color: #5554de;
-  color: #ffffff;
-  border-radius: 16px;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+.reviews-table--style1 .review-box__title p {
   font-size: 16px;
-  transition: 0.3s;
+  line-height: 24px;
+  font-weight: 600;
+  margin: 0;
 }
-.review-box__cta a:hover {
-  background-color: #2222de;
+@media (min-width: 768px) {
+  .reviews-table--style1 .review-box__title p {
+    font-size: 20px;
+    line-height: 32px;
+  }
 }
-.review-box__benefits {
+.reviews-table--style1 .review-box__cta {
+  grid-area: cta;
+  align-self: center;
+}
+@media (max-width: 768px) {
+  .reviews-table--style1 .review-box__cta {
+    border-top: 1px solid #f4f5f7;
+    padding: 1.3rem 0 0;
+  }
+}
+.reviews-table--style1 .review-box__cta a {
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  cursor: pointer;
+  color: #181818;
+  background-color: #05e98f;
+  width: 100%;
+  white-space: nowrap;
+  transition: background-color 0.3s ease-in-out;
+}
+@media (min-width: 768px) {
+  .reviews-table--style1 .review-box__cta a {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+.reviews-table--style1 .review-box__cta a:hover {
+  background-color: #04c378;
+}
+.reviews-table--style1 .review-box__benefits {
   grid-area: benefits;
 }
-.review-box__benefits ul {
-  list-style-type: disc;
+@media (max-width: 768px) {
+  .reviews-table--style1 .review-box__benefits {
+    border-width: 1px 0;
+    border-style: solid;
+    padding: 1.3rem 0 0;
+    border-color: #f4f5f7;
+  }
 }
-.review-box__benefits ul li::before {
-  all: unset;
-}
-.review-box__benefits ul li::marker {
-  color: #dbd8d8;
-}
-.review-box__info {
+.reviews-table--style1 .review-box__info {
   grid-area: info;
+  padding: 0.5rem;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-.review-box__info > p {
-  all: unset;
+@media screen and (max-width: 768px) {
+  .reviews-table--style1 .review-box__info {
+    flex-direction: column;
+  }
 }
-.review-box__info > p span {
-  font-weight: bold;
+.reviews-table--style1 .review-box__info p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #6c6c6c;
+  margin: 0;
+  padding-right: 1.5rem;
+  border-right: 1px solid #f1f1f1;
 }
-.review-box__toggle {
+.reviews-table--style1 .review-box__info p span {
+  font-weight: 500;
+  color: #1f1f1f;
+}
+.reviews-table--style1 .review-box__toggle {
   grid-area: toggle;
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  background: transparent;
-  border: none;
 }
-.review-box__toggle::after {
-  content: "";
+.reviews-table--style1 .review-box__toggle button {
+  width: auto;
+  margin-left: auto;
+  border: 0;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  cursor: pointer;
+  color: #2b2b2b;
+  padding: 0.5rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.reviews-table--style1 .review-box__toggle button img {
+  flex: 0 0 15px;
   width: 15px;
   height: 15px;
-  flex: 0 0 15px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("../img/arrow.svg");
+  object-fit: contain;
 }
-.review-box__toggle[aria-expanded=true]::after {
+.reviews-table--style1 .review-box__toggle button[aria-expanded=true] img {
   transform: rotate(180deg);
 }
-.review-box__expand {
+.reviews-table--style1 .review-box__expand {
   grid-area: expand;
   display: none;
 }
-.review-box__data-1 {
+.reviews-table--style1 .review-box__data-1 {
   grid-area: data1;
   display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.review-box__data-2 {
+.reviews-table--style1 .review-box__data-1 span img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 0.5px;
+}
+.reviews-table--style1 .review-box__data-1 span img:first-child {
+  border-radius: 100vh;
+  box-shadow: 0 0 0 1px #dbd8d8;
+}
+.reviews-table--style1 .review-box__data-1 h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+}
+.reviews-table--style1 .review-box__data-2 {
   grid-area: data2;
   display: flex;
-  justify-self: end;
+  gap: 0.8rem;
+}
+@media screen and (max-width: 768px) {
+  .reviews-table--style1 .review-box__data-2 {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+.reviews-table--style1 .review-box__data-2 > a {
+  font-weight: 400;
+  font-size: 14px;
+  color: #4443b8;
+  text-decoration-line: underline;
+}
+.reviews-table--style1 .review-box__data-2 .review-rating {
+  --rating-color: #f0d800;
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=custom-reviews-listing.css.map */
